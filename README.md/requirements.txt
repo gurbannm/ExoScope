@@ -1,0 +1,27 @@
+# A World Away: Hunting for Exoplanets with AI
+
+**Goal:** Automatically classify TESS/K2/cumulative exoplanet candidates into **Planet / Candidate / False Positive** using open NASA datasets and ML.
+
+## Data
+- TESS TOI: `data_input/tess_toi.csv`
+- K2 Planets & Candidates: `data_input/k2_pandc.csv`
+- Cumulative Exoplanets: `data_input/cumulative_exoplanets.csv`
+
+## Pipeline
+1. **Preprocess (TESS only)**  
+   `python3 src/preprocess.py`
+2. **Train (TESS only)**  
+   `python3 src/train.py`
+3. **Merge datasets** (TESS + K2 + Cumulative)  
+   `python3 src/merge_datasets.py`
+4. **Preprocess (merged)**  
+   `python3 src/preprocess_merged.py`
+5. **Train (merged)**  
+   `python3 src/train_merged.py`
+6. **Feature importance**  
+
+## Results Summary
+| Model | Accuracy | Planet Recall | Candidate F1 | False Positive F1 |
+|--------|-----------|---------------|---------------|-------------------|
+| TESS only | ~0.74 | ~0.67 | 0.83 | 0.54 |
+| Merged (TESS + K2 + Cumulative) | *coming soon* | *to be evaluated* | *–* | *–* |
